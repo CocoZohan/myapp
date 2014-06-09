@@ -50,8 +50,8 @@
       <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/myapp/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44524238" vertical-offset="92" max-vertical-offset="935">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.12926391" vertical-offset="463" max-vertical-offset="1020">
+              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -493,7 +493,7 @@
       <workItem from="1402047241280" duration="1255000" />
       <workItem from="1402052944559" duration="736000" />
       <workItem from="1402055426106" duration="1108000" />
-      <workItem from="1402301564291" duration="6331000" />
+      <workItem from="1402301564291" duration="6676000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1402307905532</created>
@@ -511,11 +511,15 @@
       <created>1402308494391</created>
       <updated>1402308494391</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="test7">
+      <created>1402308700534</created>
+      <updated>1402308700534</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12393000" />
+    <option name="totallyTimeSpent" value="12738000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -569,7 +573,8 @@
     </option>
     <MESSAGE value="test" />
     <MESSAGE value="test3" />
-    <option name="LAST_COMMIT_MESSAGE" value="test3" />
+    <MESSAGE value="test7" />
+    <option name="LAST_COMMIT_MESSAGE" value="test7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -761,8 +766,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/myapp/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44524238" vertical-offset="92" max-vertical-offset="935">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.12926391" vertical-offset="463" max-vertical-offset="1020">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

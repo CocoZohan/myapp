@@ -18,11 +18,14 @@ public class MyActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // Buttons connect to view-elements
         b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.button2);
         b3 = (Button)findViewById(R.id.button3);
         b4 = (Button)findViewById(R.id.button4);
 
+        // Action listener is set
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
@@ -31,6 +34,8 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        // Actions performed when one of the buttons is pressed
+        // Toasts with the name of pressed button appear
         switch(v.getId()){
             case R.id.button:
                 Toast.makeText(this, "Button 1 is pressed", Toast.LENGTH_SHORT).show();
