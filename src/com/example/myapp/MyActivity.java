@@ -18,7 +18,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        dfhf
         b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.button2);
         b3 = (Button)findViewById(R.id.button3);
