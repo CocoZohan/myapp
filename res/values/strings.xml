@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">myapp</string>
+    <string name="b1name">Button 1</string>
+    <string name="b2name">Button 2</string>
+    <string name="b3name">Button 3</string>
+    <string name="b4name">Button 4</string>
 </resources>
