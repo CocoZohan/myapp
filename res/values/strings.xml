@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">myapp</string>
-    <string name="b1name">Button 1</string>
-    <string name="b2name">Button 2</string>
-    <string name="b3name">Button 3</string>
-    <string name="b4name">Button 4</string>
+    <string-array name="buttons">
+            <item>Button 1</item>
+            <item>Button 2</item>
+            <item>Button 3</item>
+            <item>Button 4</item>
+    </string-array>
+    <string-array name="descr">
+        <item>Description for Button 1</item>
+        <item>Description for Button 2</item>
+        <item>Description for Button 3</item>
+        <item>Description for Button 4</item>
+    </string-array>
 </resources>
