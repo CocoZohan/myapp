@@ -15,4 +15,9 @@
     </string-array>
     <string name="begin">begin</string>
     <string name="end">end</string>
+    <string name="tvurl1">Url #1</string>
+    <string name="tvurl2">Url #2</string>
+    <string name="tvurl3">Url #3</string>
+    <string name="btnsave">Save</string>
+    <string name="btncancel">Cancel</string>
 </resources>
