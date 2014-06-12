@@ -62,22 +62,17 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
         sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
         editor.putString("url1", etUrl1.getText().toString());
-        editor.commit();
-        editor.clear();
         editor.putString("url2", etUrl2.getText().toString());
-        editor.commit();
-        editor.clear();
         editor.putString("url3", etUrl3.getText().toString());
         editor.commit();
-        editor.clear();
         //Toast.makeText(this, "Urls are saved", Toast.LENGTH_SHORT).show();
     }
 
     private void loadUrls(){
         sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
         url1 = sPref.getString("url1", "");
-        url1 = sPref.getString("url1", "");
-        url1 = sPref.getString("url1", "");
+        url2 = sPref.getString("url2", "");
+        url3 = sPref.getString("url3", "");
         etUrl1.setText(url1);
         etUrl2.setText(url2);
         etUrl3.setText(url3);
@@ -89,10 +84,10 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
             return url1;
         }
         if(i == 2){
-            return url1;
+            return url2;
         }
         if(i == 3){
-            return url1;
+            return url3;
         }
         return null;
     }
