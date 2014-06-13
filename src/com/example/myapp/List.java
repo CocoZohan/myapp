@@ -55,7 +55,7 @@ public class List extends ListFragment {
         switch(position){
             case 0:
                 if(aa.getUrl(1) != null) {
-                    new MyAsync(this.getActivity()).execute(aa.getUrl(1));
+                    Toast.makeText(this.getActivity(), "Url address is not empty", Toast.LENGTH_SHORT).show();//new MyAsync(this.getActivity()).execute();
                 } else {
                     Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
                 }

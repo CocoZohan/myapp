@@ -18,7 +18,6 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
     EditText etUrl1, etUrl2, etUrl3;
     Button btnSave, btnCancel;
     SharedPreferences sPref;
-    String url1, url2, url3;
 
     final public String PREF_FILE = "MyPref";
 
@@ -50,10 +49,12 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
             case R.id.btnsave:
                 saveUrls();
                 loadUrls();
-                finish();
+                onDestroy();
+                //onBackPressed();
                 break;
             case R.id.btncancel:
-                finish();
+                onDestroy();
+                //onBackPressed();
                 break;
         }
     }
@@ -70,24 +71,22 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
 
     private void loadUrls(){
         sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
-        url1 = sPref.getString("url1", "");
-        url2 = sPref.getString("url2", "");
-        url3 = sPref.getString("url3", "");
-        etUrl1.setText(url1);
-        etUrl2.setText(url2);
-        etUrl3.setText(url3);
+        etUrl1.setText(sPref.getString("url1", ""));
+        etUrl2.setText(sPref.getString("url2", ""));
+        etUrl3.setText(sPref.getString("url3", ""));
         //Toast.makeText(this, "Urls are loaded", Toast.LENGTH_SHORT).show();
     }
 
     public String getUrl(int i){
+        sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
         if(i == 1){
-            return url1;
+            return sPref.getString("url1", "");
         }
         if(i == 2){
-            return url2;
+
         }
         if(i == 3){
-            return url3;
+
         }
         return null;
     }
