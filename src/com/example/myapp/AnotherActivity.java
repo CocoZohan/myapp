@@ -1,23 +1,20 @@
 package com.example.myapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by Practicant1.ORPO_KRG on 12.06.2014.
  */
 public class AnotherActivity extends Activity implements View.OnClickListener{
 
-    TextView tvUrl1, tvUrl2, tvUrl3;
-    EditText etUrl1, etUrl2, etUrl3;
+    TextView textviewUrl1, textviewUrl2, textviewUrl3;
+    EditText edittextUrl1, edittextUrl2, edittextUrl3;
     Button btnSave, btnCancel;
-    public String url1;
     SharedPrefs sharedPrefs;
 
     @Override
@@ -27,13 +24,13 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
 
         sharedPrefs = new SharedPrefs();
 
-        tvUrl1 = (TextView)findViewById(R.id.tvurl1);
-        tvUrl2 = (TextView)findViewById(R.id.tvurl2);
-        tvUrl3 = (TextView)findViewById(R.id.tvurl3);
+        textviewUrl1 = (TextView)findViewById(R.id.tvurl1);
+        textviewUrl2 = (TextView)findViewById(R.id.tvurl2);
+        textviewUrl3 = (TextView)findViewById(R.id.tvurl3);
 
-        etUrl1 = (EditText)findViewById(R.id.eturl1);
-        etUrl2 = (EditText)findViewById(R.id.eturl2);
-        etUrl3 = (EditText)findViewById(R.id.eturl3);
+        edittextUrl1 = (EditText)findViewById(R.id.eturl1);
+        edittextUrl2 = (EditText)findViewById(R.id.eturl2);
+        edittextUrl3 = (EditText)findViewById(R.id.eturl3);
 
         btnSave = (Button)findViewById(R.id.btnsave);
         btnCancel = (Button)findViewById(R.id.btncancel);
@@ -41,18 +38,18 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
         btnSave.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
 
+        // it there are saved urls, they are displayed in the edittexts
         loadUrls();
     }
 
+    // save button is clicked to save urls written in edittexts
+    // cancel button is clicked to leave the activity without changing url addresses
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnsave:
                 saveUrls();
-                Intent intent = new Intent();
-                intent.putExtra("url1","value_here");
-                setResult(RESULT_OK, intent);
-                finish();
+                onBackPressed();
                 break;
             case R.id.btncancel:
                 onBackPressed();
@@ -60,31 +57,17 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
         }
     }
 
+    // save urls written in the edittexts
     private void saveUrls(){
-        sharedPrefs.setMyStringPref(this, "url1", etUrl1.getText().toString());
-        sharedPrefs.setMyStringPref(this, "url2", etUrl2.getText().toString());
-        sharedPrefs.setMyStringPref(this, "url3", etUrl3.getText().toString());
-        //Toast.makeText(this, "Urls are saved", Toast.LENGTH_SHORT).show();
+        sharedPrefs.setMyStringPref(this, "url1", edittextUrl1.getText().toString());
+        sharedPrefs.setMyStringPref(this, "url2", edittextUrl2.getText().toString());
+        sharedPrefs.setMyStringPref(this, "url3", edittextUrl3.getText().toString());
     }
 
+    // display urls in the edittexts
     public void loadUrls(){
-        etUrl1.setText(sharedPrefs.getMyStringPref(this, "url1"));
-        etUrl2.setText(sharedPrefs.getMyStringPref(this, "url2"));
-        etUrl3.setText(sharedPrefs.getMyStringPref(this, "url3"));
-        //Toast.makeText(this, "Urls are loaded", Toast.LENGTH_SHORT).show();
-    }
-
-    public String getUrl(int i){
-        String temp = "Sthing";
-        if(i == 1){
-
-        }
-        if(i == 2){
-
-        }
-        if(i == 3){
-
-        }
-        return temp;
+        edittextUrl1.setText(sharedPrefs.getMyStringPref(this, "url1"));
+        edittextUrl2.setText(sharedPrefs.getMyStringPref(this, "url2"));
+        edittextUrl3.setText(sharedPrefs.getMyStringPref(this, "url3"));
     }
 }

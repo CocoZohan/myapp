@@ -1,8 +1,6 @@
 package com.example.myapp;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -23,9 +21,12 @@ public class MyActivity extends Activity {
         setContentView(R.layout.main);
 
         tv = (TextView)findViewById(R.id.textView);
+
+        // progress bar is initialized, but set invisible
         pb = (ProgressBar)findViewById(R.id.progressBar);
         pb.setVisibility(View.GONE);
 
+        // display text which says whether a user is connected
         if(isConnected()){
             tv.setText("You are connected");
             connection = true;

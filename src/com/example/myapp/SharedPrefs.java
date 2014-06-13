@@ -8,27 +8,20 @@ import android.content.SharedPreferences;
  */
 public class SharedPrefs {
 
+    // all urls are saved in MyPref.xml
     public final static String PREF_FILE = "MyPref";
 
     private static SharedPreferences getPrefs(Context context) {
         return context.getSharedPreferences(PREF_FILE, 0);
     }
 
+    // get url by key
     public static String getMyStringPref(Context context, String key) {
         return getPrefs(context).getString(key, "default");
     }
 
-    public static int getMyIntPref(Context context, String key) {
-        return getPrefs(context).getInt(key, 42);
-    }
-
+    //set url by key
     public static void setMyStringPref(Context context, String key, String value) {
-        // perform validation etc..
         getPrefs(context).edit().putString(key, value).commit();
-    }
-
-    public static void setMyIntPref(Context context, String key, int value) {
-        // perform validation etc..
-        getPrefs(context).edit().putInt(key, value).commit();
     }
 }

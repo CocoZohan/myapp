@@ -2,16 +2,16 @@
 <resources>
     <string name="app_name">myapp</string>
     <string-array name="buttons">
-            <item>Button 1</item>
-            <item>Button 2</item>
-            <item>Button 3</item>
-            <item>Button 4</item>
+            <item>Go to Url #1</item>
+            <item>Go to Url #2</item>
+            <item>Go to Url #3</item>
+            <item>Set Urls</item>
     </string-array>
     <string-array name="descr">
-        <item>Description for Button 1</item>
-        <item>Description for Button 2</item>
-        <item>Description for Button 3</item>
-        <item>Description for Button 4</item>
+        <item>Click if you want to go to Url #1</item>
+        <item>Click if you want to go to Url #2</item>
+        <item>Click if you want to go to Url #3</item>
+        <item>Click to set/change Url addresses</item>
     </string-array>
     <string name="begin">begin</string>
     <string name="end">end</string>

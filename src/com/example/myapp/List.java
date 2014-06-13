@@ -2,7 +2,6 @@ package com.example.myapp;
 
 import android.app.ListFragment;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -32,47 +31,70 @@ public class List extends ListFragment {
         intent = new Intent(getActivity(), AnotherActivity.class);
         sharedPrefs = new SharedPrefs();
 
+        // fill List with data (image, text, subtext)
         ArrayList<Map<String, Object>> data = new ArrayList<Map<String,
                 Object>>(getResources().getStringArray(R.array.buttons).length);
-        Map<String, Object> m;
+        Map<String, Object> map;
+
 
         for(int i = 0; i<getResources().getStringArray(R.array.buttons).length; i++){
-            m = new HashMap<String, Object>();
-            m.put(ATTR_NAME_IMG, R.drawable.ic_launcher);
-            m.put(ATTR_NAME_TEXT, getResources().getStringArray(R.array.buttons)[i].toString());
-            m.put(ATTR_NAME_SUBTEXT, getResources().getStringArray(R.array.descr)[i].toString());
-            data.add(m);
+            map = new HashMap<String, Object>();
+            map.put(ATTR_NAME_IMG, R.drawable.ic_launcher);
+            map.put(ATTR_NAME_TEXT, getResources().getStringArray(R.array.buttons)[i].toString());
+            map.put(ATTR_NAME_SUBTEXT, getResources().getStringArray(R.array.descr)[i].toString());
+            data.add(map);
         }
 
         String [] from = {ATTR_NAME_IMG, ATTR_NAME_TEXT, ATTR_NAME_SUBTEXT};
         int[] to = {R.id.icon, R.id.text, R.id.subtext};
 
+        // simple adapter as an adapter, my_item_list as a layout
         SimpleAdapter adapter = new SimpleAdapter(this.getActivity(), data, R.layout.my_item_list, from, to);
         setListAdapter(adapter);
     }
 
+    /**
+     * when item in the list is clicked:
+     * if it is "Go to Url...", it connects to that Url
+     * if it is "Set Urls", it goes to AnotherActivity to set/change Url addresses
+     *
+     * If there is problems with internet connection or with url addresses,
+     * toasts are displayed
+     */
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         switch(position){
             case 0:
-                if(sharedPrefs.getMyStringPref(this.getActivity(), "url1") != null) {
-                    new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url1"));
+                if(MyActivity.connection) {
+                    if (sharedPrefs.getMyStringPref(this.getActivity(), "url1") != null) {
+                        new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url1"));
+                    } else {
+                        Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this.getActivity(), "No internet connection", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 1:
-                if(sharedPrefs.getMyStringPref(this.getActivity(), "url2") != null) {
-                    new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url2"));
+                if(MyActivity.connection) {
+                    if (sharedPrefs.getMyStringPref(this.getActivity(), "url3") != null) {
+                        new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url3"));
+                    } else {
+                        Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this.getActivity(), "No internet connection", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 2:
-                if(sharedPrefs.getMyStringPref(this.getActivity(), "url3") != null) {
-                    new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url3"));
+                if(MyActivity.connection) {
+                    if (sharedPrefs.getMyStringPref(this.getActivity(), "url3") != null) {
+                        new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url3"));
+                    } else {
+                        Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this.getActivity(), "No internet connection", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 3:
