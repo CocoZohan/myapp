@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import android.app.ListFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -21,15 +22,15 @@ public class List extends ListFragment {
     final String ATTR_NAME_SUBTEXT = "subtext";
     final String ATTR_NAME_IMG = "img";
 
-    AnotherActivity aa;
     Intent intent;
+    SharedPrefs sharedPrefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        aa = new AnotherActivity();
-        intent = new Intent(getActivity(), aa.getClass());
+        intent = new Intent(getActivity(), AnotherActivity.class);
+        sharedPrefs = new SharedPrefs();
 
         ArrayList<Map<String, Object>> data = new ArrayList<Map<String,
                 Object>>(getResources().getStringArray(R.array.buttons).length);
@@ -54,17 +55,25 @@ public class List extends ListFragment {
         super.onListItemClick(l, v, position, id);
         switch(position){
             case 0:
-                if(aa.getUrl(1) != null) {
-                    Toast.makeText(this.getActivity(), "Url address is not empty", Toast.LENGTH_SHORT).show();//new MyAsync(this.getActivity()).execute();
+                if(sharedPrefs.getMyStringPref(this.getActivity(), "url1") != null) {
+                    new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url1"));
                 } else {
                     Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 1:
-
+                if(sharedPrefs.getMyStringPref(this.getActivity(), "url2") != null) {
+                    new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url2"));
+                } else {
+                    Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case 2:
-
+                if(sharedPrefs.getMyStringPref(this.getActivity(), "url3") != null) {
+                    new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url3"));
+                } else {
+                    Toast.makeText(this.getActivity(), "Url address is empty", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case 3:
                 startActivity(intent);

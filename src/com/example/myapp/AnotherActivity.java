@@ -1,7 +1,7 @@
 package com.example.myapp;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,14 +17,15 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
     TextView tvUrl1, tvUrl2, tvUrl3;
     EditText etUrl1, etUrl2, etUrl3;
     Button btnSave, btnCancel;
-    SharedPreferences sPref;
-
-    final public String PREF_FILE = "MyPref";
+    public String url1;
+    SharedPrefs sharedPrefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.another_activity);
+
+        sharedPrefs = new SharedPrefs();
 
         tvUrl1 = (TextView)findViewById(R.id.tvurl1);
         tvUrl2 = (TextView)findViewById(R.id.tvurl2);
@@ -48,39 +49,35 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
         switch(view.getId()){
             case R.id.btnsave:
                 saveUrls();
-                loadUrls();
-                onDestroy();
-                //onBackPressed();
+                Intent intent = new Intent();
+                intent.putExtra("url1","value_here");
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
             case R.id.btncancel:
-                onDestroy();
-                //onBackPressed();
+                onBackPressed();
                 break;
         }
     }
 
     private void saveUrls(){
-        sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sPref.edit();
-        editor.putString("url1", etUrl1.getText().toString());
-        editor.putString("url2", etUrl2.getText().toString());
-        editor.putString("url3", etUrl3.getText().toString());
-        editor.commit();
+        sharedPrefs.setMyStringPref(this, "url1", etUrl1.getText().toString());
+        sharedPrefs.setMyStringPref(this, "url2", etUrl2.getText().toString());
+        sharedPrefs.setMyStringPref(this, "url3", etUrl3.getText().toString());
         //Toast.makeText(this, "Urls are saved", Toast.LENGTH_SHORT).show();
     }
 
-    private void loadUrls(){
-        sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
-        etUrl1.setText(sPref.getString("url1", ""));
-        etUrl2.setText(sPref.getString("url2", ""));
-        etUrl3.setText(sPref.getString("url3", ""));
+    public void loadUrls(){
+        etUrl1.setText(sharedPrefs.getMyStringPref(this, "url1"));
+        etUrl2.setText(sharedPrefs.getMyStringPref(this, "url2"));
+        etUrl3.setText(sharedPrefs.getMyStringPref(this, "url3"));
         //Toast.makeText(this, "Urls are loaded", Toast.LENGTH_SHORT).show();
     }
 
     public String getUrl(int i){
-        sPref = getSharedPreferences(PREF_FILE, MODE_PRIVATE);
+        String temp = "Sthing";
         if(i == 1){
-            return sPref.getString("url1", "");
+
         }
         if(i == 2){
 
@@ -88,6 +85,6 @@ public class AnotherActivity extends Activity implements View.OnClickListener{
         if(i == 3){
 
         }
-        return null;
+        return temp;
     }
 }
