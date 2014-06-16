@@ -11,8 +11,8 @@ public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
-    public static ProgressBar pb;
-    public static TextView tv;
+    public static ProgressBar progressBar;
+    public static TextView textView;
     public static boolean connection;
 
     @Override
@@ -20,18 +20,18 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        tv = (TextView)findViewById(R.id.textView);
+        textView = (TextView)findViewById(R.id.textView);
 
         // progress bar is initialized, but set invisible
-        pb = (ProgressBar)findViewById(R.id.progressBar);
-        pb.setVisibility(View.GONE);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
         // display text which says whether a user is connected
         if(isConnected()){
-            tv.setText("You are connected");
+            textView.setText("You are connected");
             connection = true;
         } else {
-            tv.setText("No connection");
+            textView.setText("No connection");
             connection = false;
         }
     }

@@ -1,11 +1,8 @@
 package com.example.myapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -13,35 +10,41 @@ import android.widget.Toast;
  */
 public class MyAsync  extends AsyncTask<String, Void, String> {
 
-    Connection conn;
+    Connection connection;
     Context ctx;
 
     MyAsync (Context ctx){
         this.ctx = ctx;
     }
 
+    // display text "Downloading" before the action takes place
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(ctx, "onPreExecute", Toast.LENGTH_SHORT).show();
-        MyActivity.pb.setVisibility(View.VISIBLE);
+        Toast.makeText(ctx, "Donwloading", Toast.LENGTH_SHORT).show();
+        MyActivity.progressBar.setVisibility(View.VISIBLE);
     }
 
+    // actual action happens
+    // fetches web info according to input urls
     @Override
     protected String doInBackground(String... strings) {
         String result = "";
         for(String url: strings){
-            conn = new Connection();
-            result = conn.getFrom(url);
+            connection= new Connection();
+            result = connection.getFrom(url);
         }
         return result;
     }
 
+    //display "Finished" after finishing the action
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        Toast.makeText(ctx, "onPostExecute", Toast.LENGTH_SHORT).show();
-        MyActivity.pb.setVisibility(View.GONE);
-        MyActivity.tv.setText(result);
+        Toast.makeText(ctx, "Finished", Toast.LENGTH_SHORT).show();
+        MyActivity.progressBar.setVisibility(View.GONE);
+
+        // displays result on Main Activity
+        MyActivity.textView.setText(result);
     }
 }
