@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import android.app.ListFragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -65,7 +66,7 @@ public class List extends ListFragment {
         super.onListItemClick(l, v, position, id);
         switch(position){
             case 0:
-                if(MyActivity.connection) {
+                /*if(MyActivity.connection) {
                     if (sharedPrefs.getMyStringPref(this.getActivity(), "url1") != null) {
                         new MyAsync(this.getActivity()).execute(sharedPrefs.getMyStringPref(this.getActivity(), "url1"));
                     } else {
@@ -73,7 +74,8 @@ public class List extends ListFragment {
                     }
                 } else {
                     Toast.makeText(this.getActivity(), "No internet connection", Toast.LENGTH_SHORT).show();
-                }
+                }*/
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://fapl.ru/")));
                 break;
             case 1:
                 if(MyActivity.connection) {

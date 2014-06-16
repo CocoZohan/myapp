@@ -1,8 +1,11 @@
 package com.example.myapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -31,7 +34,7 @@ public class MyAsync  extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         String result = "";
         for(String url: strings){
-            connection= new Connection();
+            connection = new Connection();
             result = connection.getFrom(url);
         }
         return result;
@@ -44,7 +47,7 @@ public class MyAsync  extends AsyncTask<String, Void, String> {
         Toast.makeText(ctx, "Finished", Toast.LENGTH_SHORT).show();
         MyActivity.progressBar.setVisibility(View.GONE);
 
-        // displays result on Main Activity
+        //
         MyActivity.textView.setText(result);
     }
 }
